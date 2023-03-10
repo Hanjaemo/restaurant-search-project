@@ -8,5 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/basic/test")
 public class BasicController {
 
-    
+    @GetMapping()
+    public String test() {
+        return "지도 ㅎㅇ";
+    }
+
+
 }
