@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,10 @@
             <h1>어디가지?뭐먹지?</h1>
             <img class="image" src="../img/보드탄개구리.jpeg" alt="개구리점프">
             <h3>개같은 한밭대! 밥이라도 잘먹자~~~~~~~~~~~~~~~~~~~~~~~~~~!</h3>
-            <button id="mainButton" onclick="location.href='page1.html'">START</button>
+            <button id="mainButton"
+                    onclick="location.href='location.html'"
+                    th:onclick="|location.href='@{/index/location}'|"
+            >START</button>
         </div>
     </body>
 </html>

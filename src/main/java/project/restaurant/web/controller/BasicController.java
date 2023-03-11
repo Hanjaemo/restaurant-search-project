@@ -1,16 +1,17 @@
 package project.restaurant.web.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping()
+@Controller
+@RequestMapping("/index")
 public class BasicController {
 
-    @GetMapping("/page1")
+    @GetMapping("/location")
     public String location() {
-        return "html/page1";
+        System.out.println("BasicController.location");
+        return "location";
     }
 
 
