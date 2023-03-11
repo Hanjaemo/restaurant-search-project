@@ -12,7 +12,7 @@ public class RestRepository {
 
     private final RestMapper restMapper;
 
-    List<Rest> findAll(RestSearchCond cond) {
+    public List<Rest> findAll(RestSearchCond cond) {
         return restMapper.findAll(cond);
     }
 }

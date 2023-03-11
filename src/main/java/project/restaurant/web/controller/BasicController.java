@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/basic/test")
+@RequestMapping()
 public class BasicController {
 
-    @GetMapping()
-    public String test() {
-        return "지도 ㅎㅇ";
+    @GetMapping("/page1")
+    public String location() {
+        return "html/page1";
     }
 
 
