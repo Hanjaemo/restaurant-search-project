@@ -1,9 +1,12 @@
 package project.restaurant.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+import java.util.List;
+
+@Data
 public class Rest {
 
     private Long id;
@@ -13,6 +16,8 @@ public class Rest {
     private String foodType;
     private String category;
     private Integer price;
+
+    private List<Integer> locations;
 
     public Rest() {
     }

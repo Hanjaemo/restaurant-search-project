@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-너가 고른 위치는 <span th:value="${location}">location</span>
+너가 고른 위치는
+<div th:each="location : ${rest.locations}" class="checked-location-list">
+    <span th:text="|${location} 구역|">1구역</span>
+</div>
 </body>
 </html>

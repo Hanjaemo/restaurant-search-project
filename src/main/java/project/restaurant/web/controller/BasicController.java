@@ -3,13 +3,12 @@ package project.restaurant.web.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import project.restaurant.domain.User;
-
-import java.util.HashMap;
+import project.restaurant.domain.Rest;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,28 +18,24 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class BasicController {
 
-    private final User user;
+    @ModelAttribute("locations")
+    public Map<Integer, String> locations() {
+        Map<Integer, String> locations = new LinkedHashMap<>();
+        locations.put(1, "1 구역");
+        locations.put(2, "2 구역");
+        locations.put(3, "3 구역");
+        return locations;
+    }
 
     @GetMapping("/location")
-    public String location() {
+    public String location(Model model) {
+        model.addAttribute("rest", new Rest());
         return "main/location";
     }
 
-/*
     @PostMapping("/single")
-    public String single(@ModelAttribute List<Integer> location, Model model) {
-        user.setLocation(location);
-        model.addAttribute("location", location);
+    public String single(@ModelAttribute Rest rest) {
+        log.info("rest.locations={}", rest.getLocations());
         return "main/single";
-    }
-*/
-
-    @ModelAttribute("locationMap")
-    public Map<Integer, String> locationMap() {
-        Map<Integer, String> locationMap = new LinkedHashMap<>();
-        locationMap.put(1, "1 구역");
-        locationMap.put(2, "2 구역");
-        locationMap.put(3, "3 구역");
-        return locationMap;
     }
 }

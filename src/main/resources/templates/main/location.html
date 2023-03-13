@@ -21,10 +21,14 @@
 
 
 
-    <form th:action="@{/single}" method="post">
-
+    <form th:action="@{/single}" th:object="${rest}" method="post">
         <div>
-
+            <div>구역 선택</div>
+            <div th:each="location : ${locations}" calss="location-check-inline">
+                <input type="checkbox" th:field="*{locations}" th:value="${location.key}" class="location-check-input">
+                <label th:for="${#ids.prev('locations')}"
+                       th:text="${location.value}" class="location-check-label">1구역</label>
+            </div>
         </div>
 
         <button id="mainButton"
