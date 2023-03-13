@@ -1,11 +1,11 @@
-package project.restaurant.repository;
+package project.restaurant.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
-@Getter @Setter
-public class RestSearchCond {
+@Setter
+@Getter
+public class User {
 
     private String name;
     private Integer location;
@@ -14,10 +14,10 @@ public class RestSearchCond {
     private String category;
     private Integer price;
 
-    public RestSearchCond() {
+    public User() {
     }
 
-    public RestSearchCond(String name, Integer location, Boolean single, String foodType, String category, Integer price) {
+    public User(String name, Integer location, Boolean single, String foodType, String category, Integer price) {
         this.name = name;
         this.location = location;
         this.single = single;
