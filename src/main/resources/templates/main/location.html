@@ -1,25 +1,40 @@
 <!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=100%, initial-scale=1.0">
-        <link href="../css/style.css" rel="stylesheet">
-        <title>어디가지?뭐먹지?</title>
-    </head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet">
+    <title>어디가지?뭐먹지?</title>
+</head>
 
-    <style>
-       
-    </style>
+<style>
 
-    <body>
-        <div id="divPosition">
-            <h1>1번 질문!</h1>
-            <img class="image" src="../img/ㅈㄷ.jpeg" alt="구역지도">
+</style>
 
-            <h3>지도에서 고르세여</h3>
-            
-            <button id="mainButton" onclick="location.href='page1.html'">START</button>
+<body>
+<div id="divPosition">
+    <h1>1번 질문!</h1>
+    <img class="image" src="../img/ㅈㄷ.jpeg" alt="구역지도">
+
+    <h3>지도에서 고르세여</h3>
+
+
+
+    <form th:action="@{/single}" method="post">
+
+        <div>
+
         </div>
-    </body>
+
+        <button id="mainButton"
+                onclick="location.href='single.html'"
+                th:onclick="|location.href='@{/single}'|"
+                type="submit"
+        >START</button>
+    </form>
+
+
+</div>
+</body>
 </html>
