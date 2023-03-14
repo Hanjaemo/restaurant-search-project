@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-
+<div th:each="restaurant : ${restaurants}">
+    <span th:text="${restaurant.name}">식당이름</span>
+</div>
 </body>
 </html>

@@ -6,12 +6,36 @@
         select name
         from restaurant
         <where>
-            <if test="location != null">
-                <foreach collection="locations" item="location"
-                         open="location in (" separator="," close=")">
+            <if test="locations != null">
+                and location in
+                <foreach collection="locations" item="locations"
+                         open="(" separator="," close=")">
                     #{locations}
                 </foreach>
-                and location = #{location}
+            </if>
+            <if test="single != null">
+                and single in
+                <foreach collection="single" item="single"
+                         open="(" separator="," close=")">
+                    #{single}
+                </foreach>
+            </if>
+            <if test="foodTypes != null">
+                and food_type in
+                <foreach collection="foodTypes" item="foodTypes"
+                         open="(" separator="," close=")">
+                    #{foodTypes}
+                </foreach>
+            </if>
+            <if test="category != null">
+                and category in
+                <foreach collection="category" item="category"
+                         open="(" separator="," close=")">
+                    #{category}
+                </foreach>
+            </if>
+            <if test="maxPrice != null">
+                and price &lt;= #{maxPrice}
             </if>
         </where>
     </select>
