@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/result}" th:object="${rest}" method="post">
+    <input type="text" id="maxPrice" th:field="*{maxPrice}" class="form-text-input">
+    <label for="maxPrice" class="form-text-label">가격</label>
+
+    <button id="mainButton"
+            onclick="location.href='result.html'"
+            th:onclick="|location.href='@{/result}'|"
+            type="submit"
+    >다음</button>
+</form>
+</body>
+</html>

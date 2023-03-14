@@ -19,23 +19,19 @@
 
     <h3>지도에서 고르세여</h3>
 
-
-
     <form th:action="@{/single}" th:object="${rest}" method="post">
-        <div>
-            <div>구역 선택</div>
-            <div th:each="location : ${locations}" calss="location-check-inline">
-                <input type="checkbox" th:field="*{locations}" th:value="${location.key}" class="location-check-input">
-                <label th:for="${#ids.prev('locations')}"
-                       th:text="${location.value}" class="location-check-label">1구역</label>
-            </div>
+        <div>구역 선택</div>
+        <div th:each="location : ${locations}" calss="form-check-inline">
+            <input type="checkbox" th:field="*{locations}" th:value="${location.key}" class="form-check-input">
+            <label th:for="${#ids.prev('locations')}"
+                   th:text="${location.value}" class="form-check-label">1구역</label>
         </div>
 
         <button id="mainButton"
                 onclick="location.href='single.html'"
                 th:onclick="|location.href='@{/single}'|"
                 type="submit"
-        >START</button>
+        >다음</button>
     </form>
 
 

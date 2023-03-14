@@ -2,27 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="project.restaurant.repository.RestMapper">
 
-
-
     <select id="findAll" resultType="Rest">
         select name
         from restaurant
         <where>
             <if test="location != null">
-                and location == #{location}
-            </if>
-            <if test="single != null">
-                and single == #{single}
-            </if>
-            <if test="foodType != null and foodType != ''">
-                and food_type == #{foodType}
-            </if>
-            <if test="category != null and category != ''">
-                and category == #{category}
-            </if>
-            <if test="price != null">
-                and price &lt;= #{price}
+                <foreach collection="locations" item="location"
+                         open="location in (" separator="," close=")">
+                    #{locations}
+                </foreach>
+                and location = #{location}
             </if>
         </where>
     </select>
+
 </mapper>

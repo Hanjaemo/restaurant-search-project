@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/price}" th:object="${rest}" method="post">
+
+    <div>카테고리 선택</div>
+    <div th:each="foodClass : ${category}" calss="form-check-inline">
+        <input type="checkbox" th:field="*{category}" th:value="${foodClass.key}" class="form-check-input">
+        <label th:for="${#ids.prev('category')}"
+               th:text="${foodClass.value}" class="form-check-label">1구역</label>
+    </div>
+
+    <button id="mainButton"
+            onclick="location.href='category.html'"
+            th:onclick="|location.href='@{/category}'|"
+            type="submit"
+    >다음</button>
+</form>
+</body>
+</html>
