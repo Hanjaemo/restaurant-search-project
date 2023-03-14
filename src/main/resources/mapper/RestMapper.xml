@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="project.restaurant.repository.RestMapper">
 
-    <select id="findAll" resultType="Rest">
+    <select id="findAll" resultType="RestSearchCond">
         select name
         from restaurant
         <where>
@@ -14,11 +14,7 @@
                 </foreach>
             </if>
             <if test="single != null">
-                and single in
-                <foreach collection="single" item="single"
-                         open="(" separator="," close=")">
-                    #{single}
-                </foreach>
+                and single = #{single}
             </if>
             <if test="foodTypes != null">
                 and food_type in

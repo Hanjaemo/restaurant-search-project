@@ -7,9 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import project.restaurant.domain.Rest;
+import project.restaurant.domain.RestSearchCond;
 import project.restaurant.service.RestService;
 
 import java.util.LinkedHashMap;
@@ -22,6 +22,7 @@ import java.util.Map;
 public class BasicController {
 
     private final RestService restService;
+    private final RestSearchCond cond;
 
     @ModelAttribute("locations")
     public Map<Integer, String> locations() {
@@ -51,6 +52,8 @@ public class BasicController {
         category.put("snack", "분식");
         category.put("pork", "돈가스");
         category.put("meat", "고기");
+        category.put("vtn", "베트남");
+        category.put("fast", "패스트푸드");
         return category;
     }
 
@@ -62,32 +65,37 @@ public class BasicController {
 
     @PostMapping("/single")
     public String single(@ModelAttribute Rest rest) {
-        log.info("rest.locations={}", rest.getLocations());
+        cond.setLocations(rest.getLocations());
         return "main/single";
     }
 
     @PostMapping("/food-type")
     public String foodType(@ModelAttribute Rest rest) {
-        log.info("rest.single={}", rest.getSingle());
+        cond.setSingle(rest.getSingle());
         return "main/food-type";
     }
 
     @PostMapping("/category")
     public String category(@ModelAttribute Rest rest) {
-        log.info("rest.foodTypes={}", rest.getFoodTypes());
+        if (rest.getFoodTypes().contains("RICE") && rest.getFoodTypes().contains("NOODLE")) {
+            cond.setFoodTypes(rest.getFoodTypes());
+            cond.getFoodTypes().add("ALL");
+        }
+        cond.setFoodTypes(rest.getFoodTypes());
         return "main/category";
     }
 
     @PostMapping("/price")
     public String price(@ModelAttribute Rest rest) {
-        log.info("rest.category={}", rest.getCategory());
+        cond.setCategory(rest.getCategory());
         return "main/price";
     }
 
     @PostMapping("/result")
     public String result(@ModelAttribute Rest rest, Model model) {
-        log.info("rest.maxPrice={}", rest.getMaxPrice());
-        List<Rest> restaurants = restService.findAll(rest);
+        cond.setMaxPrice(rest.getMaxPrice());
+        log.info("rest={}", cond);
+        List<Rest> restaurants = restService.findAll(cond);
         model.addAttribute("restaurants", restaurants);
         return "main/result";
     }
