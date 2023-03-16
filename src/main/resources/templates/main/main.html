@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{fragment/header :: header}">
+
+        <title>어디가지?뭐먹지?</title>
+    </head>
+
+    <style>
+       
+    </style>
+
+    <body>
+
+        <div class="container">
+            <div class="progressBar">
+                <progress value="20" max="100" id="jb"></progress>
+            </div>
+            <div class="item item-2 align-center">
+                <h1><div class="mainName">어디가지?<br>뭐먹지?</div></h1>
+            </div>
+            <div class="item item-3 align-center">
+
+                <img class="image" src="../img/개구리는개굴개굴.jpg" alt="개구리점프">
+                <h3>개같은 한밭대! 밥이라도 잘먹자~~~~~~~~~~~~~~~~~~~~~~~~~~!</h3>
+            </div>
+<!--            <div class="item item-3 align-center">-->
+
+<!--            </div>-->
+            <div th:fragment="start-button" class="item item-3 align-center">
+                <button id="button"
+                        onclick="location.href='page1.html'"
+                        th:onclick="|location.href='@{/location}'|"
+                >START</button>
+            </div>
+<!--            <div class="item item-3 align-center">-->
+
+<!--            </div>-->
+        </div>
+    </body>
+</html>

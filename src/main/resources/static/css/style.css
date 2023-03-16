@@ -5,14 +5,36 @@ html,body{height: 100%;}
     padding: 0;
 }
 
-#divPosition {
-    width: 500px;
+.progressBar {
+    width: 100%;
+	height: 25px;
+    padding-top: 10px;
+}
+
+.mainName {
+    line-height:1.0;
+    padding-top: 10px;
+    font-family: 'East Sea Dokdo', cursive;
+    text-decoration: none; 
+    color: inherit;
+}
+
+.mainImage {
+    width: 350px;
+    height: auto;
+    padding-top: 40px;
+}
+
+
+.container {
+    width: 100%;
     height: 100%;
     margin: auto;
     text-align: center;
     border-left: 1px solid black;
     border-right: 1px solid black;
     background-color: rgb(170, 210, 249);
+    display: grid;
 }
 
 #mainButton {
@@ -31,7 +53,39 @@ html,body{height: 100%;}
     display: block;
 }
 
-.image {
-    width: 400px;
+.space_button {
+    height: 74px;
+}
+
+.space_logo {
+    height: 70px;
+}
+
+.space_select {
+    height: 410px;
+}
+
+.map {
+    width: 350px;
     height: auto;
+    padding-bottom: 100px;
+}
+
+.btm_image {
+    width: 150px;
+    height: 150px;
+    border: none;
+    object-fit: cover;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+}
+
+.space_question {
+    height: 40px;
+}
+
+.empty_space {
+    height: 35px;
 }
