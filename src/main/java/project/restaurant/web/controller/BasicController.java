@@ -60,19 +60,19 @@ public class BasicController {
     @GetMapping("/location")
     public String location(Model model) {
         model.addAttribute("rest", new Rest());
-        return "main/location";
+        return "page/location";
     }
 
     @PostMapping("/single")
     public String single(@ModelAttribute Rest rest) {
         cond.setLocations(rest.getLocations());
-        return "main/single";
+        return "page/single";
     }
 
     @PostMapping("/food-type")
     public String foodType(@ModelAttribute Rest rest) {
         cond.setSingle(rest.getSingle());
-        return "main/food-type";
+        return "page/food-type";
     }
 
     @PostMapping("/category")
@@ -82,13 +82,13 @@ public class BasicController {
             cond.getFoodTypes().add("ALL");
         }
         cond.setFoodTypes(rest.getFoodTypes());
-        return "main/category";
+        return "page/category";
     }
 
     @PostMapping("/price")
     public String price(@ModelAttribute Rest rest) {
         cond.setCategory(rest.getCategory());
-        return "main/price";
+        return "page/price";
     }
 
     @PostMapping("/result")
@@ -97,6 +97,12 @@ public class BasicController {
         log.info("rest={}", cond);
         List<Rest> restaurants = restService.findAll(cond);
         model.addAttribute("restaurants", restaurants);
-        return "main/result";
+        return "page/result";
+    }
+
+    @GetMapping("/main")
+    public String main() {
+        // clear
+        return "page/main";
     }
 }

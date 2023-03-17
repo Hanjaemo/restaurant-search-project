@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:insert="~{fragment/header :: header}">
+        <title>어디가지?뭐먹지?</title>
+    </head>
+
+    <style></style>
+
+    <body>
+        <div class="container">
+            <div class="progressBar">
+                <progress value="0" max="100" id="jb"></progress>
+            </div>
+
+            <div th:insert="~{fragment/main-page :: main-page}"></div>
+
+            <div class="space_question"><h3 class="question">지역을 고르세요</h3></div>
+
+            <div class="space_select">
+                <img class="map" src="../img/지도.jpg" alt="지도 선택">
+            </div>
+
+            <form th:action="@{/single}" th:object="${rest}" method="post">
+                <span th:each="location : ${locations}" calss="form-check-inline">
+                    <input type="checkbox" th:field="*{locations}" th:value="${location.key}" class="form-check-input">
+                    <label th:for="${#ids.prev('locations')}"
+                           th:text="${location.value}" class="form-check-label">1구역</label>
+                </span>
+
+                <button id="mainButton"
+                        onclick="location.href='single.html'"
+                        th:onclick="|location.href='@{/single}'|"
+                        type="submit"
+                >NEXT</button>
+            </form>
+        </div>
+    </body>
+</html>

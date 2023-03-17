@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:insert="~{fragment/header :: header}">
+        <title>어디가지?뭐먹지?</title>
+    </head>
+
+    <style></style>
+
+    <body>
+        <div class="container">
+            <div class="empty_space"></div>
+
+            <div th:insert="~{fragment/main-page :: main-page}"></div>
+            
+            <div class="space_question">
+                <h3 class="question">좋았어<br>오늘 저녁은<br>치킨이닭</h3>
+            </div>
+            
+
+            <div class="space_select">
+                <!--여기엔 이제 가게 나오면 됨-->
+            </div>
+            
+
+            <div class="space_button">
+                <button id="mainButton"
+                        onclick="location.href='main.html'"
+                        th:onclick="|location.href='@{/main}'|"
+                >Restart</button>
+            </div>
+        </div>
+    </body>
+</html>

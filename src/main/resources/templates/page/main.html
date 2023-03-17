@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:insert="~{fragment/header :: header}">
+        <title>어디가지?뭐먹지?</title>
+    </head>
+
+    <style>
+       
+    </style>
+
+    <body>
+        <div class="container">
+            <div class="progressBar">
+                <progress value="0" max="100" id="jb" hidden></progress>
+            </div>
+            <div class="mainPage">
+                <h1><div class="mainName">어디가지?<br>뭐먹지?</div></h1>
+                <img class="mainImage" src="../img/mainImage.jpg" alt="로고 이미지(개구리)">
+                <h3>한밭대! 밥이라도 잘먹자~~~~~~~~!</h3>
+            </div>
+
+            <div class="empty_space"></div> <!--빈 공간용-->
+
+            <div class="space_button">
+                <button id="mainButton"
+                        onclick="location.href='location.html'"
+                        th:onclick="|location.href='@{/location}'|"
+                >START</button>
+            </div>
+        </div>
+    </body>
+</html>

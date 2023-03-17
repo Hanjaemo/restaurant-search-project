@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:insert="~{fragment/header :: header}">
+        <title>어디가지?뭐먹지?</title>
+    </head>
+
+    <style></style>
+
+    <body>
+        <div class="container">
+            <div class="progressBar">
+                <progress value="80" max="100" id="jb"></progress>
+            </div>
+
+            <div th:insert="~{fragment/main-page :: main-page}"></div>
+            
+            <div class="space_question">
+                <h3 class="question">얼마까지 알아보고 오셨어?</h3>
+            </div>
+
+            <form th:action="@{/result}" th:object="${rest}" method="post">
+                <input type="text" id="maxPrice" th:field="*{maxPrice}" class="form-text-input">
+                <label for="maxPrice" class="form-text-label">가격</label>
+
+                <button id="mainButton"
+                        onclick="location.href='result.html'"
+                        th:onclick="|location.href='@{/result}'|"
+                        type="submit"
+                >다음</button>
+            </form>
+        </div>
+    </body>
+</html>

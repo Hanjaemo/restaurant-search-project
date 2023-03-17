@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:insert="~{fragment/header :: header}">
+        <title>어디가지?뭐먹지?</title>
+    </head>
+
+    <style></style>
+
+    <body>
+        <div class="container">
+            <div class="progressBar">
+                <progress value="40" max="100" id="jb"></progress>
+            </div>
+
+            <div th:insert="~{fragment/main-page :: main-page}"></div>
+
+            <div class="space_question"><h3 class="question">혼자니?</h3></div>
+
+            <form th:action="@{/food-type}" th:object="${rest}" method="post">
+
+                <div class="form-check-inline">
+                    <input type="checkbox" id="single" th:field="*{single}" class="form-check-input">
+                    <label for="single" class="form-check-label">혼밥</label>
+                </div>
+
+                <button id="mainButton"
+                        onclick="location.href='food-type.html'"
+                        th:onclick="|location.href='@{/food-type}'|"
+                        type="submit"
+                >다음</button>
+            </form>
+
+
+        </div>
+    </body>
+</html>
